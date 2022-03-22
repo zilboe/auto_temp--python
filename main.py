@@ -137,7 +137,7 @@ class TW:
             "qt": "False",#其他
             "jc": "False",#？？
             "fx": "False",#腹泻
-            "lc": "河北省 石家庄市 栾城区",
+            "lc": " ",#位置，中文输入就可以例如：北京市 丰台区
             "actionName": "actionValue",
         }
         response = requests.post(url=self.add_tw,headers=headers,cookies=cookies,data=data)
@@ -147,7 +147,7 @@ class TW:
             print("保存失败")
 if __name__ == "__main__":
     starttime = time.perf_counter()
-    ass = denglu('0414180204','zilboe1106')
+    ass = denglu('username','password')#账号，密码
     cookie = ass.get_cookie_login()
     csrftoken = cookie['csrftoken']
     sessionid = cookie['sessionid']
