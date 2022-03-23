@@ -154,7 +154,7 @@ if __name__ == "__main__":
     ss = TW(csrftoken=csrftoken,sessionid=sessionid)
     ss.tw_add()
     endtime = time.perf_counter()
-    print('本次运行时间{.2f}秒'.format(endtime - starttime))
+    print('本次运行时间{}秒'.format(endtime - starttime))
 
 
 
