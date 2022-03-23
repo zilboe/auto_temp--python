@@ -88,7 +88,7 @@ class denglu:
         return getcookies
 class TW:
     def __init__(self,csrftoken,sessionid):
-        self.add_tw = "https://ksxskj.hevttc.edu.cn/NCIR/user_data/add/pmbt/"
+        self.add_tw = "https://ksxskj.hevttc.edu.cn/NCIR/user_data/add/"
         self.csrftoken = csrftoken
         self.sessionid = sessionid
         self.csrfmiddlewaretoken = self.get_csrfmiddlewaretoken()
