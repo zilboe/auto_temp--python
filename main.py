@@ -137,7 +137,7 @@ class TW:
             "qt": "False",#其他
             "jc": "False",#？？
             "fx": "False",#腹泻
-            "lc": " ",#位置，中文输入就可以例如：北京市 丰台区
+            "lc": "",#位置，中文输入就可以例如：北京市 丰台区
             "actionName": "actionValue",
         }
         response = requests.post(url=self.add_tw,headers=headers,cookies=cookies,data=data)
