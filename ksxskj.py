@@ -2,12 +2,13 @@ import requests
 from lxml import etree
 import ddddocr
 import random
+
 """
 来自虎的和雷总的科师空间脚本
 使用https://github.com/sml2h3/ddddocr进行验证码识别
-依赖模块 requests lxml ddddocr random
-请先pip install requests lxml ddddocr random
 """
+
+
 def login(username, password):
     login1 = "https://ksxskj.hevttc.edu.cn/"
     login2 = "https://ksxskj.hevttc.edu.cn/getcheckimg/"
@@ -58,8 +59,8 @@ def login(username, password):
     login_cookies = requests.utils.dict_from_cookiejar(session.cookies)
     return login_cookies
 
-def tem_xg(csrftoken, sessionid):
 
+def tem_xg(csrftoken, sessionid, local):
     url = "https://ksxskj.hevttc.edu.cn/NCIR/user_data/add/"
 
     cookies = {
@@ -98,7 +99,6 @@ def tem_xg(csrftoken, sessionid):
     def get_csrfmiddlewaretoken():
         url_cookies = "https://ksxskj.hevttc.edu.cn/NCIR/user_data/add/pmbt/"
         get_csrfmiddlewaretoken = requests.get(url=url_cookies, cookies=cookies)
-        print(get_csrfmiddlewaretoken.text)
         xpaths = etree.HTML(get_csrfmiddlewaretoken.text)
         csrfmiddlewaretoken = xpaths.xpath('//div[@id="content-main"]/form/input/@value')
         return csrfmiddlewaretoken[0]
@@ -123,7 +123,7 @@ def tem_xg(csrftoken, sessionid):
         # 未知
         # "jqjc":"",
         # 位置 。。不需要编码
-        "lc": "某某省 某某市 某某县",
+        "lc": local,
         "actionName": "actionValue",
     }
     xg_tw = requests.post(url, data=data, cookies=cookies, headers=headers)
@@ -132,5 +132,7 @@ def tem_xg(csrftoken, sessionid):
 
 if __name__ == "__main__":
     # 账号密码输入处
-    cookie = login(username="", password="")
-    tem_xg(csrftoken=cookie['csrftoken'], sessionid=cookie['sessionid'])
+    data = (["账号", "密码", "某某省 某某市 某某县"], ["123123", "456456", "789789"])
+    for under in range(0, len(data)):
+        cookie = login(data[under][0], data[under][1])
+        tem_xg(cookie['csrftoken'], cookie['sessionid'], data[under][2])
