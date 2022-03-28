@@ -52,7 +52,7 @@ def login(username, password):
         "csrfmiddlewaretoken": csrfmiddlewaretoken[0],
         "username": username,
         "password": password,
-        "check_code": str(captcha).replace(" ",""),
+        "check_code": str(captcha).replace(" ", ""),
         "next": "%2F"
     }
     session.post(url=login3, data=data, headers=headers, cookies=cookies)
