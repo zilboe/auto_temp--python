@@ -4,7 +4,7 @@ import ddddocr
 import random
 
 """
-来自虎的和雷总的科师空间脚本
+来自孙和雷的科师空间脚本
 使用https://github.com/sml2h3/ddddocr进行验证码识别
 """
 
